@@ -10,8 +10,7 @@ const testSchema = new Schema({
     type: String
   },
   createdBy: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
+    type: String,
     required: true
   },
   questions: [
@@ -22,11 +21,10 @@ const testSchema = new Schema({
   ],
   assignedStudents: [
     {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
+      type: String,
+      required: true
     }
   ],
-  // Other test details
 });
 
 module.exports = mongoose.model('Test', testSchema);
