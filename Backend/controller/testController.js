@@ -2,7 +2,7 @@ const asyncHandler = require('express-async-handler');
 const Test = require('../models/Test');
 
 
-const updateTest = asyncHandler(async (req, res) => {
+const createTest = asyncHandler(async (req, res) => {
   const { title, description, createdBy, questions, assignedStudents} = req.body;
   
   try {
@@ -24,4 +24,4 @@ const updateTest = asyncHandler(async (req, res) => {
 
 
 
-module.exports = { updateTest }
+module.exports = { createTest }

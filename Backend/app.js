@@ -4,6 +4,7 @@ const cors = require('cors');
 const connectDb = require('./config/dbConnection');
 const userRoutes = require('./routes/userRoutes');
 const testRoutes = require('./routes/testRoutes');
+const questionRoutes = require('./routes/questionRoutes');
 
 
 
@@ -17,6 +18,8 @@ app.use(cors());
 app.use(express.json());
 app.use('/user', userRoutes);
 app.use('/test', testRoutes);
+app.use('/question', questionRoutes);
+
 
 
 
