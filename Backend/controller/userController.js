@@ -57,8 +57,17 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid username or password");
   }
 });
+
+
 const currentUser = asyncHandler(async (req, res) => {
     res.json(req.user)
 });
 
-module.exports = { registerUser, loginUser, currentUser };
+
+const getStudents = asyncHandler(async (req, res) => {
+    const students = await User.find({role: "student"});
+    res.json(students);
+})
+
+
+module.exports = { registerUser, loginUser, currentUser, getStudents };
