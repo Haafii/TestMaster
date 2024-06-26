@@ -21,5 +21,11 @@ const createQuestions = asyncHandler(async (req, res) => {
 });
 
 
+const getQuestions = asyncHandler(async(req, res) =>{
+  const questions = await Questions.find();
+  res.json(questions);
+})
 
-module.exports = { createQuestions }
+
+
+module.exports = { createQuestions, getQuestions }
