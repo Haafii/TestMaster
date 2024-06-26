@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { fullName, username, password } = req.body;
+  const { fullName, username, password, role } = req.body;
   if (!fullName || !username || !password || !role) {
     res.status(404);
     throw new Error("Please fill all the fields");
