@@ -21,10 +21,16 @@ const testSchema = new Schema({
   ],
   assignedStudents: [
     {
-      type: String,
-      required: true
+      studentId: {
+        type: String,
+        required: true
+      },
+      submissionStatus: {
+        type: Boolean,
+        default: false
+      }
     }
-  ],
+  ]
 });
 
 module.exports = mongoose.model('Test', testSchema);

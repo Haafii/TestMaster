@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const submissionSchema = new Schema({
   student: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
+    type: String,
     required: true
   },
   test: {
@@ -14,9 +13,9 @@ const submissionSchema = new Schema({
   },
   answers: [{
     question: {
-      type: Schema.Types.ObjectId, ref: 'Question',
+      type: Schema.Types.ObjectId, 
+      ref: 'Question',
       required: true
-
     },
     answerText: {
       type: String
@@ -26,6 +25,9 @@ const submissionSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  score: {
+    type: Number
+  }
 });
 
 module.exports = mongoose.model('Submission', submissionSchema);
