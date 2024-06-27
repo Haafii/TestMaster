@@ -9,6 +9,7 @@ import AssignedTests from './components/AssignedTests';
 import TestDetailPage from './components/TestDetailPage';
 import TeacherTestsPage from './components/TeacherTestsPage';
 import TeacherTestDetailPage from './components/TeacherTestDetailPage';
+import StudentSubmissionDetailPage from './components/StudentSubmissionDetailPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/test/:testId"  element={<TestDetailPage />}/>
           <Route path="/view-submission"  element={<TeacherTestsPage />}/>
           <Route path="/teacher/test/:testId" element={<TeacherTestDetailPage />} />
+          <Route path="/teacher/test/:testId/student/:studentId" element={<StudentSubmissionDetailPage />} />
 
         </Routes>
       </div>
