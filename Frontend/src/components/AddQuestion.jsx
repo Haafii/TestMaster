@@ -23,36 +23,53 @@ const AddQuestion = () => {
   };
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md max-w-md mx-auto mt-4">
-      <h2 className="text-2xl font-bold mb-4">Add Question</h2>
-      <div className="mb-4">
-        <label className="block text-gray-700">Question Type</label>
-        <select value={questionType} onChange={(e) => setQuestionType(e.target.value)} className="w-full mt-1 p-2 border rounded">
-          <option value="multiple-choice">Multiple Choice</option>
-          <option value="short-answer">Short Answer</option>
-          <option value="essay">Essay</option>
-        </select>
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700">Question Text</label>
-        <input type="text" value={questionText} onChange={(e) => setQuestionText(e.target.value)} className="w-full mt-1 p-2 border rounded" />
-      </div>
-      {questionType === 'multiple-choice' && (
-        <div>
-          <label className="block text-gray-700">Options</label>
-          {options.map((option, index) => (
-            <input
-              key={index}
-              type="text"
-              value={option}
-              onChange={(e) => handleOptionChange(index, e.target.value)}
-              className="w-full mt-1 p-2 border rounded mb-2"
-              placeholder={`Option ${index + 1}`}
-            />
-          ))}
+    <div className="bg-primary flex flex-col items-center justify-center min-h-screen md:py-2">
+      <h2 className="text-2xl font-bold mb-4 text-white">Add Question</h2>
+      <div className="bg-secondary justify-center rounded-2xl shadow-2xl flex flex-col w-full md:w-1/3 items-center max-w-4xl transition duration-1000 ease-out">
+        <div className="mb-4">
+          <label className="block text-white">Question Type</label>
+          <select
+            value={questionType}
+            onChange={(e) => setQuestionType(e.target.value)}
+            className="w-full  mt-1 p-2 border rounded text-secondary"
+          >
+            <option value="multiple-choice">Multiple Choice</option>
+            <option value="short-answer">Short Answer</option>
+            <option value="essay">Essay</option>
+          </select>
         </div>
-      )}
-      <button onClick={handleSubmit} className="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Save Question</button>
+        <div className="mb-4">
+          <label className="block text-white">Question Text</label>
+          <input
+            type="text"
+            value={questionText}
+            onChange={(e) => setQuestionText(e.target.value)}
+            className="w-full mt-1 p-10  border rounded text-secondary"
+          />
+        </div>
+        {questionType === 'multiple-choice' && (
+          <div>
+            <label className="block text-white">Options</label>
+            {options.map((option, index) => (
+              <input
+                key={index}
+                type="text"
+                value={option}
+                onChange={(e) => handleOptionChange(index, e.target.value)}
+                className="w-full items-center justify-center flex flex-col mt-1 p-2 border rounded mb-2 text-secondary"
+                placeholder={`Option ${index + 1}`}
+              />
+            ))}
+          </div>
+        )}
+        <button
+          onClick={handleSubmit}
+          className="bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-600"
+        >
+          Save Question
+        </button>
+      </div>
+
     </div>
   );
 };
