@@ -35,4 +35,16 @@ const SubmitTest = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { SubmitTest };
+const getSubmissionsByTestAndUser = asyncHandler(async (req, res) => {
+  const { testId, student } = req.params;
+
+  try {
+    const submissions = await Submission.find({ test: testId, student: student });
+
+    res.status(200).json(submissions);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+module.exports = { SubmitTest, getSubmissionsByTestAndUser };
