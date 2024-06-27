@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
+import HomePage from './components/HomePage';
+import AddQuestion from './components/AddQuestion';
+import CreateTest from './components/CreateTest';
 
 function App() {
   return (
@@ -10,6 +13,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/add-question" element={<AddQuestion />} />
+        <Route path="/create-test" element={<CreateTest />} />
         </Routes>
       </div>
     </Router>

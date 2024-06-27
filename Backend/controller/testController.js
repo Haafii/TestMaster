@@ -22,16 +22,16 @@ const createTest = asyncHandler(async (req, res) => {
 });
 
 
-const getTests = asyncHandler(async(req, res) =>{
+const getTests = asyncHandler(async (req, res) => {
   const { username } = req.params;
   try {
-    const tests = await Test.find({ assignedStudents: username }).exec();
+    const tests = await Test.find({ 'assignedStudents.studentId': username }).exec();
     res.json(tests);
   } catch (error) {
     console.error('Error finding tests:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
-})
+});
 
 
 const getTestsByUserWithSubmissionStatus = asyncHandler(async (req, res) => {
