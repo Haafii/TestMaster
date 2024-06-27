@@ -34,5 +34,38 @@ const getTests = asyncHandler(async(req, res) =>{
 })
 
 
+const getTestsByUserWithSubmissionStatus = asyncHandler(async (req, res) => {
+  const { username } = req.params;
 
-module.exports = { createTest, getTests }
+  try {
+    const tests = await Test.aggregate([
+      { 
+        $match: { createdBy: username } 
+      },
+      { 
+        $unwind: "$assignedStudents" 
+      },
+      { 
+        $match: { "assignedStudents.submissionStatus": true } 
+      },
+      {
+        $group: {
+          _id: "$_id",
+          title: { $first: "$title" },
+          description: { $first: "$description" },
+          createdBy: { $first: "$createdBy" },
+          questions: { $first: "$questions" },
+          assignedStudents: { $push: "$assignedStudents" }
+        }
+      }
+    ]);
+
+    res.status(200).json(tests);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+
+
+module.exports = { createTest, getTests, getTestsByUserWithSubmissionStatus }
