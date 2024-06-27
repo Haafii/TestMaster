@@ -83,4 +83,16 @@ const getTestById = asyncHandler(async (req, res) => {
 });
 
 
-module.exports = { createTest, getTests, getTestsByUserWithSubmissionStatus, getTestById }
+
+const getTestsCreatedByUser = asyncHandler(async (req, res) => {
+  const { username } = req.params;
+
+  try {
+    const tests = await Test.find({ createdBy: username });
+    res.status(200).json(tests);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+module.exports = { createTest, getTests, getTestsByUserWithSubmissionStatus, getTestById , getTestsCreatedByUser}

@@ -240,12 +240,14 @@ const HomePage = () => {
         <div>
           <Link to="/add-question" className="block bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Add Question</Link>
           <Link to="/create-test" className="block bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Create Test</Link>
+          <Link to="/view-submission" className="block bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">View Submission</Link>
+
         </div>
       )}
       {role === 'student' && (
         <div>
           <Link to="/assigned-tests" className="block bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Assigned Tests</Link>
-          {/* <Link to="/create-test" className="block bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Create Test</Link> */}
+          {/* <Link to="/view-result" className="block bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Create Test</Link> */}
         </div>
       )}
     </div>
