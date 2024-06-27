@@ -5,6 +5,8 @@ import Login from './components/Login';
 import HomePage from './components/HomePage';
 import AddQuestion from './components/AddQuestion';
 import CreateTest from './components/CreateTest';
+import AssignedTests from './components/AssignedTests';
+import TestDetailPage from './components/TestDetailPage';
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/add-question" element={<AddQuestion />} />
-        <Route path="/create-test" element={<CreateTest />} />
+          <Route path="/create-test" element={<CreateTest />} />
+          <Route path="/assigned-tests" element={<AssignedTests />} />
+          <Route path="/test/:testId"  element={<TestDetailPage />}/>
         </Routes>
       </div>
     </Router>
