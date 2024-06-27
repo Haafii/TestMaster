@@ -8,7 +8,7 @@ const CreateTest = () => {
   const [selectedQuestions, setSelectedQuestions] = useState([]);
   const [students, setStudents] = useState([]);
   const [selectedStudents, setSelectedStudents] = useState([]);
-  const username = localStorage.getItem('username')
+  const username = localStorage.getItem('username');
 
   useEffect(() => {
     const fetchQuestionsAndStudents = async () => {
@@ -29,7 +29,7 @@ const CreateTest = () => {
     const data = {
       title,
       description,
-      createdBy: username, // Replace with the current user's username
+      createdBy: username,
       questions: selectedQuestions,
       assignedStudents: selectedStudents.map(studentId => ({ studentId, submissionStatus: false }))
     };
@@ -42,18 +42,18 @@ const CreateTest = () => {
   };
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md max-w-md mx-auto mt-4">
-      <h2 className="text-2xl font-bold mb-4">Create Test</h2>
+    <div className="p-4 flex flex-col min-h-screen md:py-2 bg-primary shadow-md ">
+      <h2 className="text-2xl font-bold mb-4 text-white">Create Test</h2>
       <div className="mb-4">
-        <label className="block text-gray-700">Title</label>
+        <label className="block text-white">Title</label>
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="w-full mt-1 p-2 border rounded" />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700">Description</label>
+        <label className="block text-white">Description</label>
         <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="w-full mt-1 p-2 border rounded" />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700">Select Questions</label>
+        <label className="block text-white">Select Questions</label>
         {questions.map(question => (
           <div key={question._id} className="flex items-center mb-2">
             <input
@@ -67,12 +67,12 @@ const CreateTest = () => {
               }}
               className="mr-2"
             />
-            <span>{question.questionText}</span>
+            <span className="text-white">{question.questionText}</span>
           </div>
         ))}
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700">Select Students</label>
+        <label className="block text-white">Select Students</label>
         {students.map(student => (
           <div key={student._id} className="flex items-center mb-2">
             <input
@@ -86,11 +86,11 @@ const CreateTest = () => {
               }}
               className="mr-2"
             />
-            <span>{student.fullName}</span>
+            <span className="text-white">{student.fullName}</span>
           </div>
         ))}
       </div>
-      <button onClick={handleSubmit} className="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Save Test</button>
+      <button onClick={handleSubmit} className="bg-sky-500 text-secondary py-2 px-4 rounded mt-4 hover:bg-sky-600">Save Test</button>
     </div>
   );
 };
