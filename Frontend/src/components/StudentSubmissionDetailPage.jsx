@@ -36,17 +36,17 @@ const StudentSubmissionDetailPage = () => {
   };
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md max-w-md mx-auto mt-4">
-      <h2 className="text-2xl font-bold mb-4">Submission by {studentId}</h2>
+    <div className="p-4 bg-primary h-screen items-center text-white flex flex-col">
+      <h2 className="text-2xl font-bold mb-4 text-white">Submission by {studentId}</h2>
       {questions.map((question, index) => (
-        <div key={question._id} className="mb-4">
+        <div key={question._id} className="mb-4 bg-secondary p-4 rounded-lg w-1/2">
           <p className="font-bold">{question.questionType}</p>
           <p className="font-bold">{question.questionText}</p>
           <p>{submission.answers[index].answerText}</p>
         </div>
       ))}
-      <div className="mb-4">
-        <label className="block font-bold mb-1">Score</label>
+      <div className="mb-4 bg-secondary p-4 rounded-lg w-1/2">
+        <label className="block font-bold mb-1 text-white">Score</label>
         <input
           type="number"
           value={score}
@@ -56,7 +56,7 @@ const StudentSubmissionDetailPage = () => {
       </div>
       <button
         onClick={handleSubmitScore}
-        className="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700"
+        className="bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-600"
       >
         Submit Score
       </button>
