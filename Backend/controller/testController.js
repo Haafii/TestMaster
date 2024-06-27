@@ -66,6 +66,21 @@ const getTestsByUserWithSubmissionStatus = asyncHandler(async (req, res) => {
   }
 });
 
+const getTestById = asyncHandler(async (req, res) => {
+  const { testId } = req.params;
+
+  try {
+    const test = await Test.findById(testId);
+
+    if (!test) {
+      return res.status(404).json({ message: 'Test not found' });
+    }
+
+    res.status(200).json(test);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
 
 
-module.exports = { createTest, getTests, getTestsByUserWithSubmissionStatus }
+module.exports = { createTest, getTests, getTestsByUserWithSubmissionStatus, getTestById }
