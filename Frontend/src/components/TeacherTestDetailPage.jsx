@@ -31,21 +31,24 @@ const TeacherTestDetailPage = () => {
   }, [testId]);
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md max-w-md mx-auto mt-4">
+    <div className="p-4 bg-primary flex flex-col h-screen items-center justify-center text-white shadow-md" >
       <h2 className="text-2xl font-bold mb-4">{test?.title}</h2>
       <p className="mb-4">{test?.description}</p>
       <h3 className="text-xl font-bold mb-2">Assigned Students</h3>
-      {students.map(student => (
-        <div key={student._id} className="mb-2">
+      {students.map((student) => (
+        <div key={student._id} className="mb-2 bg-secondary p-4 items-center justify-center rounded-lg flex flex-col w-2/6">
           {student.submissionStatus ? (
             <button
-              onClick={() => window.location.href = `/teacher/test/${testId}/student/${student.username}`}
-              className="text-blue-500 hover:underline"
+              onClick={() => (window.location.href = `/teacher/test/${testId}/student/${student.username}`)}
+              className="bg-sky-500 text-secondary w-5/6 flex items-center justify-center hover:bg-sky-600 hover:text-secondary rounded-lg px-3 py-1"
             >
               {student.fullName}
             </button>
           ) : (
-            <p>{student.fullName} - <span className="text-red-500">Not submitted</span></p>
+            <p>
+              {student.fullName} -{' '}
+              <span className="text-red-500">Not submitted</span>
+            </p>
           )}
         </div>
       ))}
