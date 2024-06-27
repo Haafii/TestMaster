@@ -36,7 +36,7 @@ const StudentSubmissionDetailPage = () => {
   };
 
   return (
-    <div className="p-4 bg-primary h-screen items-center text-white flex flex-col">
+    <div className="p-4 bg-primary h-full items-center text-white flex flex-col">
       <h2 className="text-2xl font-bold mb-4 text-white">Submission by {studentId}</h2>
       {questions.map((question, index) => (
         <div key={question._id} className="mb-4 bg-secondary p-4 rounded-lg w-1/2">
