@@ -2,21 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
-  const role = localStorage.getItem('role')
+  const role = localStorage.getItem('role');
+  
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md max-w-md mx-auto mt-4">
-      <h2 className="text-2xl font-bold mb-4">Home Page</h2>
+    <div className="bg-primary flex flex-col items-center justify-center min-h-screen md:py-2">
+      <h2 className="text-2xl font-bold mb-4 text-white">Home Page</h2>
       {role === 'teacher' && (
-        <div>
-          <Link to="/add-question" className="block bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Add Question</Link>
-          <Link to="/create-test" className="block bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Create Test</Link>
-          <Link to="/view-submission" className="block bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">View Submission</Link>
+        <div className="bg-secondary rounded-lg p-16">
+          <Link to="/add-question" className="block hover:text-secondary bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-700 shadow-md">Add Question</Link>
+          <Link to="/create-test" className="block hover:text-secondary bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-700 shadow-md">Create Test</Link>
+          <Link to="/view-submission" className="block hover:text-secondary bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-700 shadow-md">View Submission</Link>
         </div>
       )}
       {role === 'student' && (
-        <div>
-          <Link to="/assigned-tests" className="block bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Assigned Tests</Link>
-          <Link to="/view-result" className="block bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">View Result</Link>
+        <div className="bg-secondary rounded-lg p-16">
+          <Link to="/assigned-tests" className="block hover:text-secondary bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-700 shadow-md">Assigned Tests</Link>
+          <Link to="/view-result" className="block hover:text-secondary bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-700 shadow-md">View Result</Link>
         </div>
       )}
     </div>
