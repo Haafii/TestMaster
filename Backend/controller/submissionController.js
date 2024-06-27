@@ -47,4 +47,39 @@ const getSubmissionsByTestAndUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { SubmitTest, getSubmissionsByTestAndUser };
+
+const getSubmissionsByUser = asyncHandler(async (req, res) => {
+  console.log(req.params)
+  const { username } = req.params;
+
+  try {
+    const submissions = await Submission.find({ student: username });
+    res.status(200).json(submissions);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+
+const markSubmission = asyncHandler(async (req, res) => {
+  const { testId, student } = req.params;
+  const { score } = req.body;
+
+  try {
+    const submission = await Submission.findOneAndUpdate(
+      { test: testId, student: student },
+      { score: score },
+      { new: true }
+    );
+
+    if (!submission) {
+      return res.status(404).json({ message: 'Submission not found' });
+    }
+
+    res.status(200).json(submission);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+module.exports = { SubmitTest, getSubmissionsByTestAndUser, markSubmission, getSubmissionsByUser };
