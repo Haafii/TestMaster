@@ -23,13 +23,13 @@ const AssignedTests = () => {
   }, [username]);
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md max-w-md mx-auto mt-4">
-      <h2 className="text-2xl font-bold mb-4">Assigned Tests</h2>
+    <div className="p-4 bg-primary flex flex-col items-center justify-center h-screen w-full">
+      <h2 className="text-2xl font-bold mb-4 text-white">Assigned Tests</h2>
       {tests.map(test => (
         <div key={test._id} className="mb-4">
           <button
             onClick={() => window.location.href = `/test/${test._id}`}
-            className="text-blue-500 hover:underline"
+            className="bg-sky-500 hover:bg-sky-600 py-2  px-4 rounded-lg text-white hover:text-secondary "
           >
             {test.title}
           </button>
