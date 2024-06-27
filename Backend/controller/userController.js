@@ -69,5 +69,21 @@ const getStudents = asyncHandler(async (req, res) => {
     res.json(students);
 })
 
+const getUserByUsername = asyncHandler(async (req, res) => {
+  const { username } = req.params;
 
-module.exports = { registerUser, loginUser, currentUser, getStudents };
+  try {
+    const user = await User.findOne({ username: username });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+
+module.exports = { registerUser, loginUser, currentUser, getStudents, getUserByUsername };

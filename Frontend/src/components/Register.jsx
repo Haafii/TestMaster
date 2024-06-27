@@ -32,6 +32,9 @@ const Register = () => {
     }
     setIsLoading(false); // Reset loading state
   };
+
+
+  
   return (
     <div className="bg-primary flex flex-col items-center justify-center min-h-screen md:py-2">
       <main className="flex items-center w-full px-2 md:px-20">

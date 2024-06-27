@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-// import { Facebook, GitHub, Google } from '@mui/icons-material'
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -8,47 +7,42 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
-  const onLogin = (event) => {
+  const onLogin = async (e) => {
+    e.preventDefault();
     setIsLoading(true);
-    event.preventDefault();
-    // var formdata = new FormData();
-    // formdata.append("username", username);
-    // formdata.append("password", password);
+    try {
+      const response = await fetch('http://localhost:8501/user/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-    // var requestOptions = {
-    //   method: 'POST',
-    //   body: formdata,
-    //   redirect: 'follow'
-    // };
+      if (!response.ok) {
+        throw new Error('Login Failed');
+      }
+      localStorage.setItem('username', username);
+      const detailsResponse = await fetch(`http://localhost:8501/user/getdetails/${username}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-    // // Declare the result variable
-    // let result = null;
+      if (!detailsResponse.ok) {
+        throw new Error('Failed to fetch user details');
+      }
 
-    // fetch("https://mini-project-mkgl.onrender.com/login", requestOptions)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     result = data; // Assign the response data to the result variable
-    //     // console.log(result);
-    //     // console.log(result.access_token);
-    //     const userId = result.access_token; // User ID received from the server
-    //     // const role = result
-    //     localStorage.setItem('userId', userId);
-    //     // console.log(userId);
-
-    //     // Check if the result meets the condition for validating persons
-    //     if (result && result.access_token && result.access_token.length > 0) {
-    //       navigate("/home");
-    //     } else {
-    //       setError("Invalid username or password")
-    //     }
-    //     setIsLoading(false);
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //     setError("Login failed. Please try again."); // Set an error message to display on the login page.
-    //     setIsLoading(false);
-    //   });
+      const userDetails = await detailsResponse.json();
+      const { role } = userDetails;
+      localStorage.setItem('role', role);
+      navigate("/home");
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
