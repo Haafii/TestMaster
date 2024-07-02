@@ -47,8 +47,8 @@ npm install
 Create a `.env` file in the backend directory and add your MongoDB connection string and other environment variables:
 
 ```dotenv
-MONGO_URI=mongodb://localhost:27017/testmaster
-JWT_SECRET=your_jwt_secret
+CONNECTION_STRING=mongodb://localhost:27017/testmaster
+ACCESS_TOKEN_SECRET=your_jwt_secret
 ```
 
 ### 3. Set Up the Frontend
