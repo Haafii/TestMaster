@@ -100,7 +100,7 @@ cd backend
 nodemon start
 ```
 
-The backend server should now be running on http://localhost:5000.
+The backend server should now be running on http://localhost:8501.
 
 ### 2. Start the Frontend Development Server
 
@@ -111,7 +111,7 @@ cd ../frontend
 npm run dev
 ```
 
-The frontend development server should now be running on http://localhost:3000.
+The frontend development server should now be running on http://localhost:5173.
 
 ## Folder Structure
 
