@@ -59,7 +59,7 @@ const CreateTest = () => {
         <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="w-full mt-1 p-2 border rounded" />
       </div>
       <div className="mb-4">
-        <label className="block text-white">Select Questions</label>
+        <label className="block font-bold text-2xl text-white">Select Questions</label>
         {questions.map(question => (
           <div key={question._id} className="flex items-center mb-2">
             <input
@@ -78,7 +78,7 @@ const CreateTest = () => {
         ))}
       </div>
       <div className="mb-4">
-        <label className="block text-white">Select Students</label>
+        <label className="block text-white font-bold text-2xl">Select Students</label>
         {students.map(student => (
           <div key={student._id} className="flex items-center mb-2">
             <input
