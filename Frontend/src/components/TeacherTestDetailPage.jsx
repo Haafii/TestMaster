@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const TeacherTestDetailPage = () => {
+  const navigate = useNavigate();
   const { testId } = useParams();
   const [test, setTest] = useState(null);
   const [students, setStudents] = useState([]);
@@ -30,6 +31,10 @@ const TeacherTestDetailPage = () => {
     fetchTest();
   }, [testId]);
 
+  const handleBack = () =>{
+    navigate('/view-submission');
+  }
+
   return (
     <div className="p-4 bg-primary flex flex-col h-screen items-center justify-center text-white shadow-md" >
       <h2 className="text-2xl font-bold mb-4">{test?.title}</h2>
@@ -52,6 +57,13 @@ const TeacherTestDetailPage = () => {
           )}
         </div>
       ))}
+      <div className='mt-4'>
+        <button
+        onClick={handleBack}
+          className="bg-sky-500 hover:bg-sky-600 items-center  justify-center text-secondary font-medium py-2 px-4 rounded-lg transition duration-300"
+        >Back
+        </button>
+      </div>
     </div>
   );
 };

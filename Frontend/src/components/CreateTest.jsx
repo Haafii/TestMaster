@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const CreateTest = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [questions, setQuestions] = useState([]);
@@ -40,6 +42,10 @@ const CreateTest = () => {
       alert('Error creating test');
     }
   };
+
+  const HandleBack = () => {
+    navigate('/home');
+  }
 
   return (
     <div className="p-4 flex flex-col min-h-screen md:py-2 bg-primary shadow-md ">
@@ -90,7 +96,11 @@ const CreateTest = () => {
           </div>
         ))}
       </div>
-      <button onClick={handleSubmit} className="bg-sky-500 text-secondary py-2 px-4 rounded mt-4 hover:bg-sky-600">Save Test</button>
+      <div className='w-full flex gap-4'>
+        <button onClick={handleSubmit} className="bg-sky-500 text-secondary py-2 px-4 rounded mt-4 hover:bg-sky-600 w-1/2">Save Test</button>
+        <button onClick={HandleBack} className="bg-sky-500 text-secondary py-2 px-4 rounded mt-4 hover:bg-sky-600 w-1/2">Back</button>
+      </div>
+
     </div>
   );
 };

@@ -11,11 +11,13 @@ import TeacherTestsPage from './components/TeacherTestsPage';
 import TeacherTestDetailPage from './components/TeacherTestDetailPage';
 import StudentSubmissionDetailPage from './components/StudentSubmissionDetailPage';
 import StudentSubmissions from './components/StudentSubmissions';
+import Header from './components/Header';
 
 function App() {
   return (
     <Router>
       <div>
+        <Header />
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -23,13 +25,11 @@ function App() {
           <Route path="/add-question" element={<AddQuestion />} />
           <Route path="/create-test" element={<CreateTest />} />
           <Route path="/assigned-tests" element={<AssignedTests />} />
-          <Route path="/test/:testId"  element={<TestDetailPage />}/>
-          <Route path="/view-submission"  element={<TeacherTestsPage />}/>
+          <Route path="/test/:testId" element={<TestDetailPage />} />
+          <Route path="/view-submission" element={<TeacherTestsPage />} />
           <Route path="/teacher/test/:testId" element={<TeacherTestDetailPage />} />
           <Route path="/teacher/test/:testId/student/:studentId" element={<StudentSubmissionDetailPage />} />
           <Route path="/view-result" element={<StudentSubmissions />} />
-
-
         </Routes>
       </div>
     </Router>

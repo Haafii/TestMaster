@@ -35,8 +35,12 @@ const StudentSubmissionDetailPage = () => {
     }
   };
 
+  const navigateBack = () => {
+    window.history.back(); // Navigate to the previous page using browser history
+  };
+
   return (
-    <div className="p-4 bg-primary h-full items-center text-white flex flex-col">
+    <div className="p-4 bg-primary min-h-screen items-center text-white flex flex-col">
       <h2 className="text-2xl font-bold mb-4 text-white">Submission by {studentId}</h2>
       {questions.map((question, index) => (
         <div key={question._id} className="mb-4 bg-secondary p-4 rounded-lg w-1/2">
@@ -51,15 +55,23 @@ const StudentSubmissionDetailPage = () => {
           type="number"
           value={score}
           onChange={(e) => setScore(e.target.value)}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded text-black"
         />
       </div>
-      <button
-        onClick={handleSubmitScore}
-        className="bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-600"
-      >
-        Submit Score
-      </button>
+      <div className='flex gap-4'>
+        <button
+          onClick={handleSubmitScore}
+          className="bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-600"
+        >
+          Submit Score
+        </button>
+        <button
+          onClick={navigateBack} // Use navigateBack for onClick event
+          className="bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-600"
+        >
+          Back
+        </button>
+      </div>
     </div>
   );
 };

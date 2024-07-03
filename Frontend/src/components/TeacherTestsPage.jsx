@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const TeacherTestsPage = () => {
+  const navigate = useNavigate();
   const [tests, setTests] = useState([]);
   const username = localStorage.getItem('username');
 
@@ -17,6 +19,11 @@ const TeacherTestsPage = () => {
     fetchTests();
   }, [username]);
 
+
+  const handleBack = () =>{
+    navigate('/home');
+  }
+
   return (
     <div className="p-4 bg-primary flex flex-col items-center justify-center  shadow-md h-screen">
       <h2 className="text-2xl font-bold mb-4 text-white">Created Tests</h2>
@@ -30,6 +37,13 @@ const TeacherTestsPage = () => {
           </button>
         </div>
       ))}
+      <div>
+        <button
+        onClick={handleBack}
+          className="bg-sky-500 hover:bg-sky-600 items-center  justify-center text-secondary font-medium py-2 px-4 rounded-lg transition duration-300"
+        >Back
+        </button>
+      </div>
     </div>
   );
 };

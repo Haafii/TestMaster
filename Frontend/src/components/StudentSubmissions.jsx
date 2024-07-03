@@ -22,9 +22,13 @@ const StudentSubmissions = () => {
       .catch(error => console.error('Error fetching submissions:', error));
   }, [username]);
 
+  const navigateBack = () => {
+    window.history.back(); // Navigate to the previous page using browser history
+  };
+
   return (
     <div className="min-h-screen bg-primary py-8 flex flex-col items-center justify-center">
-      <div className="w-1/2  mx-auto bg-secondary shadow-lg rounded-lg p-6 text-white">
+      <div className="w-1/2 mx-auto bg-secondary shadow-lg rounded-lg p-6 text-white">
         <h1 className="text-2xl flex items-center justify-center font-bold mb-6">Submitted Tests</h1>
         <ul>
           {submissions.map(submission => (
@@ -40,6 +44,12 @@ const StudentSubmissions = () => {
           ))}
         </ul>
       </div>
+      <button
+        onClick={navigateBack}
+        className="bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-600"
+      >
+        Back
+      </button>
     </div>
   );
 };

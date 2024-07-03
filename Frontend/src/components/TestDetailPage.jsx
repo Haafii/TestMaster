@@ -135,9 +135,12 @@ const TestDetailPage = () => {
       console.error('Error submitting test:', error);
     }
   };
+  const navigateBack = () => {
+    window.history.back(); // Navigate to the previous page using browser history
+  };
 
   return (
-    <div className="p-4 bg-primary flex flex-col w-full h-screen items-center ">
+    <div className="p-4 bg-primary flex flex-col w-full min-h-screen items-center ">
       <h2 className="text-2xl font-bold mb-4 text-white">{test?.title}</h2>
       {questions.map(question => (
         <div key={question._id} className="mb-4 bg-secondary p-4 rounded-lg w-4/6">
@@ -162,12 +165,22 @@ const TestDetailPage = () => {
           )}
         </div>
       ))}
+      <div className='flex gap-4'>
       <button
         onClick={handleSubmit}
         className="bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-600"
       >
         Submit
       </button>
+      <button
+        onClick={navigateBack}
+        className="bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-600"
+      >
+        Back
+      </button>
+
+      </div>
+      
     </div>
   );
 };

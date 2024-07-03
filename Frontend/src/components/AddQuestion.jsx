@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AddQuestion = () => {
+  const navigate = useNavigate();
   const [questionType, setQuestionType] = useState('multiple-choice');
   const [questionText, setQuestionText] = useState('');
   const [options, setOptions] = useState(['', '', '', '']);
@@ -21,6 +23,10 @@ const AddQuestion = () => {
       alert('Error adding question');
     }
   };
+
+  const HandleBack = () =>{
+    navigate('/home');
+  }
 
   return (
     <div className="bg-primary flex flex-col items-center justify-center min-h-screen md:py-2">
@@ -62,12 +68,21 @@ const AddQuestion = () => {
             ))}
           </div>
         )}
+        <div className='gap-4 flex mb-4'>
         <button
           onClick={handleSubmit}
           className="bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-600"
         >
           Save Question
         </button>
+        <button
+          onClick={HandleBack}
+          className="bg-sky-500 text-white py-2 px-4 rounded mt-4 hover:bg-sky-600"
+        >
+          Back
+        </button>
+        </div>
+        
       </div>
 
     </div>
