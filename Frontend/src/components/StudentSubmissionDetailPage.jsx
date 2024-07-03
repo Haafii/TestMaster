@@ -36,7 +36,7 @@ const StudentSubmissionDetailPage = () => {
   };
 
   const navigateBack = () => {
-    window.history.back(); // Navigate to the previous page using browser history
+    window.history.back(); 
   };
 
   return (
@@ -44,7 +44,7 @@ const StudentSubmissionDetailPage = () => {
       <h2 className="text-2xl font-bold mb-4 text-white">Submission by {studentId}</h2>
       {questions.map((question, index) => (
         <div key={question._id} className="mb-4 bg-secondary p-4 rounded-lg w-1/2">
-          <p className="font-bold">{question.questionType}</p>
+          <p className="font-bold text-xl">{question.questionType}</p>
           <p className="font-bold">{question.questionText}</p>
           <p>{submission.answers[index].answerText}</p>
         </div>
